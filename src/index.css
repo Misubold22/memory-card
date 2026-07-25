@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand:400,700");
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #9c7bff;
+}
+
+body {
+  color: #272727;
+  font-family: "Sora", "Quicksand", serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  padding: 1rem;
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.card-deck {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-auto-flow: row;
+  gap: 2rem;
+  margin: 0 auto;
+}
+
+.playing-card {
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  font-family: "Sora", sans-serif;
+  width: 100%;
+  display: block;
+  height: auto;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  background-color: #1f1f1f;
+  border: 2px solid #1f1f1f;
+  box-shadow: 6px 6px 0 #3a3a3a;
+  border-radius: 12px;
+}
+
+.playing-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 #3a3a3a;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.playing-card:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #3a3a3a;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 1 / 1.5;
+  object-fit: fill;
+}
+
+li {
+  color: aliceblue;
+  background-color: none;
+}
+
+/* Mobile    */
+@media (max-width: 768px) {
+  body {
+    padding: 5rem;
+  }
+}
