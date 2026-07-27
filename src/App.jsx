@@ -1,8 +1,34 @@
 import { useState, useEffect } from "react";
-import "./App.css";
 
-function CardGrid() {
-  const [cards, setCards] = useState([]);
+function shuffle(array) {
+  // Fisher-Yates shuffle algorithm, which ensures truly uniform random distribution.
+  if (Array.isArray(array) && array.length === 0) return;
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
+function ShuffledCardGrid({ handleClick, cards }) {
+  if (cards != null) {
+    console.log("nu i null");
+    return cards.map((card) => (
+      <article key={card.code} className="playing-card">
+        <div className="card-illustration">
+          <img
+            src={card.image}
+            id={card.code}
+            onClick={(e) => handleClick(e.target.id)}
+          />
+        </div>
+      </article>
+    ));
+  }
+}
+
+function CardGrid({ handleClick, cards, setCards }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -26,17 +52,13 @@ function CardGrid() {
     };
 
     fetchUsers();
-  }, []); // Runs only once on component mount
+  }, [setCards]); // Runs only once on component mount
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
   console.log(cards);
   console.log(cards.cards);
-
-  function handleClick(e) {
-    console.log(e);
-  }
 
   return cards.map((card) => (
     <article key={card.code} className="playing-card">
@@ -52,12 +74,34 @@ function CardGrid() {
 }
 
 function App() {
+  const [cards, setCards] = useState([]);
+  const [shcards, setshCards] = useState(null);
+
+  function handleClick(e) {
+    console.log(e);
+    setshCards(shuffle(cards));
+    setCards([]);
+    console.log(shcards);
+  }
+
+  function handleShClick(e) {
+    console.log(e);
+    setshCards(shuffle(shcards));
+    //setshCards((prev) => shuffle(prev));
+  }
+
+  console.log(shcards);
   return (
     <>
       <div className="main">
         <h1>Memory Card Game</h1>
         <section className="card-deck" aria-label="Playing cards">
-          <CardGrid />
+          <CardGrid
+            handleClick={handleClick}
+            cards={cards}
+            setCards={setCards}
+          />
+          <ShuffledCardGrid handleClick={handleShClick} cards={shcards} />
         </section>
       </div>
     </>
