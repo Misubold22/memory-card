@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { shuffle } from "../utils/shuffle.js";
+import { motion } from "framer-motion";
 
 export function CardGrid({ onCardClick, cards, setCards }) {
   const [loading, setLoading] = useState(true);
@@ -27,14 +28,28 @@ export function CardGrid({ onCardClick, cards, setCards }) {
     fetchUsers();
   }, [setCards]); // Runs only once on component mount
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <h2 className="loading-msg">Loading...</h2>;
   if (error) return <div>Error: {error}</div>;
 
   console.log(cards);
   console.log(cards.code);
 
   return cards.map((card) => (
-    <article key={card.code} className="playing-card">
+    <motion.article
+      layout
+      key={card.code}
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        opacity: { duration: 0.3 },
+        scale: { duration: 0.3 },
+        layout: {
+          duration: 0.45,
+          ease: "easeInOut",
+        },
+      }}
+      className="playing-card"
+    >
       <div className="card-illustration">
         <img
           src={card.image}
@@ -42,6 +57,6 @@ export function CardGrid({ onCardClick, cards, setCards }) {
           onClick={(e) => onCardClick(e.target.id)}
         />
       </div>
-    </article>
+    </motion.article>
   ));
 }
