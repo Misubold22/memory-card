@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-export const StartGameModal = ({ onClose }) => {
+export const EndGameModal = ({ onClose }) => {
   return (
     <motion.article
       className="game-intro"
@@ -8,17 +8,16 @@ export const StartGameModal = ({ onClose }) => {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ scale: 0.8, opacity: 0 }}
     >
-      <h1 className="game-title">Memory Card Game</h1>{" "}
       <section className="game-modal">
-        <header className="game-modal__header">
-          <div className="game-modal__title">How To Play</div>
+        <header className="game-over-modal__header">
+          <div className="game-modal__title">Game Over</div>
         </header>
-        <p className="game-modal__message">
-          Click each card once. Repeat and lose!
+        <p className="game-over-modal__message">
+          You clicked the same card twice!
         </p>
         <footer className="game-modal__actions">
-          <button className="start-game-btn" onClick={onClose}>
-            Start Game
+          <button className="restart-game-btn" onClick={onClose}>
+            Play Again
           </button>
         </footer>
       </section>

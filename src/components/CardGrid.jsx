@@ -16,7 +16,6 @@ export function CardGrid({ onCardClick, cards, setCards }) {
           throw new Error("Network response was not okay");
         }
         const data = await response.json();
-        //setCards(data.cards);
         setCards(shuffle(data.cards));
       } catch (err) {
         setError(err.message);
@@ -31,15 +30,13 @@ export function CardGrid({ onCardClick, cards, setCards }) {
   if (loading) return <h2 className="loading-msg">Loading...</h2>;
   if (error) return <div>Error: {error}</div>;
 
-  console.log(cards);
-  console.log(cards.code);
-
   return cards.map((card) => (
     <motion.article
       layout
       key={card.code}
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
+      exit={{ scale: 0.8, opacity: 0 }}
       transition={{
         opacity: { duration: 0.3 },
         scale: { duration: 0.3 },

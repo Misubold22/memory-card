@@ -7,7 +7,7 @@
 }
 
 @font-face {
-  font-family: Brutalism;
+  font-family: Ceoma;
   src: url("./fonts/Ceoma.ttf");
 }
 
@@ -24,7 +24,7 @@ html {
 
 body {
   color: #272727;
-  font-family: Brutalism, "Sora", "Quicksand", serif;
+  font-family: Ceoma, "Sora", "Quicksand", serif;
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0.1rem;
@@ -42,14 +42,14 @@ body {
   font-size: 28px;
   font-weight: 400;
   text-align: center;
-  font-family: Brutalism;
+  font-family: Ceoma;
 }
 
 .game-title {
   font-size: 2rem;
   font-weight: 400;
   text-align: center;
-  font-family: Brutalism;
+  font-family: Ceoma;
   padding: 0;
   margin: 0;
   color: #272727;
@@ -82,13 +82,13 @@ body {
   font-weight: 400;
 
   font-size: 16px;
-  font-family: Brutalism;
+  font-family: Ceoma;
   width: 12rem;
 }
 
 .card-deck {
   display: grid;
-  padding-top: 0.5rem;
+  padding-top: 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   grid-auto-flow: row;
   gap: 2rem;
@@ -99,7 +99,7 @@ body {
   cursor: pointer;
   margin: 0;
   padding: 0;
-  font-family: Brutalism, "Sora", sans-serif;
+  font-family: Ceoma, "Sora", sans-serif;
   width: 100%;
   display: block;
   height: auto;
@@ -133,42 +133,52 @@ img {
   object-fit: fill;
 }
 
-.game-intro-card__header {
+.game-modal__header,
+.game-over-modal__header {
   padding: 1.5rem;
-
-  border-bottom: 2px solid #000;
+  border-bottom: 4px solid #00ff9f;
+}
+.game-over-modal__header {
+  border-bottom: 4px solid #ffb703;
 }
 
-.game-intro-card__title {
+.game-modal__title {
   font-weight: 900;
-  color: #000;
+  color: #272727;
   font-size: 1.5rem;
   text-transform: uppercase;
 }
 
-.game-intro-card__message {
+.game-modal__message,
+.game-over-modal__message {
   color: #000;
   font-size: 0.9rem;
   line-height: 1.4;
-  border-bottom: 2px solid #000;
+  border-bottom: 4px solid #00ff9f;
   padding: 1.5rem;
   padding-top: 1rem;
   font-weight: 600;
 }
 
-.game-intro-card__actions,
-.game-intro-card__header {
+.game-over-modal__message {
+  border-bottom: 4px solid #ffb703;
+}
+
+.game-modal__actions,
+.game-modal__header,
+.game-over-modal__header {
   padding: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.game-intro-card__actions {
+.game-modal__actions {
   padding-bottom: 1rem;
 }
 
-.start-game-btn {
+.start-game-btn,
+.restart-game-btn {
   display: block;
   position: relative;
   width: 50%;
@@ -195,11 +205,12 @@ img {
   box-shadow: 7px 7px 0 #00995d;
 }
 
-.brutalist-card__button:active {
-  transform: translate(5px, 5px);
-  box-shadow: none;
+.restart-game-btn:hover {
+  background-color: #ffc145;
+  border-color: #ffc145;
+  color: #272727;
+  box-shadow: 7px 7px 0 #ffb703;
 }
-
 /* Mobile    */
 @media (max-width: 768px) {
   body {
@@ -222,10 +233,11 @@ img {
   padding: 2rem;
 }
 
-.game-intro-card {
+.game-modal {
   border: 4px solid #000;
   background-color: #fff;
   padding: 1.5rem;
-  box-shadow: 10px 10px 0 #000;
-  font-family: Brutalism;
+  box-shadow: 10px 10px 0 #3a3a3a;
+
+  font-family: Ceoma;
 }
