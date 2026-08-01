@@ -18,7 +18,6 @@
 }
 
 html {
-  background-color: #9c7bff;
   background-color: #a68bff;
 }
 
@@ -35,18 +34,18 @@ body {
   max-width: 1200px;
   margin: 0 auto;
 }
+
 .loading-msg {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
+  font-size: clamp(1.5rem, 1.5vw, 1.8rem);
   font-weight: 400;
   text-align: center;
   font-family: Ceoma;
 }
 
 .game-title {
-  font-size: 2rem;
   font-weight: 400;
   text-align: center;
   font-family: Ceoma;
@@ -56,6 +55,7 @@ body {
   position: fixed;
   width: 100%;
   height: 80%;
+  font-size: clamp(2rem, 1.5vw, 2.5rem);
 }
 
 .game-rules {
@@ -80,15 +80,14 @@ body {
   background: #f8ff1d;
   color: #272727;
   font-weight: 400;
-
-  font-size: 16px;
+  font-size: clamp(0.875rem, 1.5vw, 1rem); /* 14px → 16px */
   font-family: Ceoma;
-  width: 12rem;
+  width: clamp(10rem, 1.5vw, 12rem);
 }
 
 .card-deck {
   display: grid;
-  padding-top: 1.5rem;
+  padding-top: 2.5rem;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   grid-auto-flow: row;
   gap: 2rem;
@@ -100,7 +99,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Ceoma, "Sora", sans-serif;
-  width: 100%;
+
   display: block;
   height: auto;
   transition:
@@ -120,17 +119,12 @@ body {
     box-shadow 180ms ease;
 }
 
-.playing-card:active {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0 #3a3a3a;
-}
-
 img {
-  width: 100%;
   height: auto;
   display: block;
-  aspect-ratio: 1 / 1.5;
+  aspect-ratio: 1 / 1.4;
   object-fit: fill;
+  width: 100%;
 }
 
 .game-modal__header,
@@ -138,6 +132,7 @@ img {
   padding: 1.5rem;
   border-bottom: 4px solid #00ff9f;
 }
+
 .game-over-modal__header {
   border-bottom: 4px solid #ffb703;
 }
@@ -145,14 +140,14 @@ img {
 .game-modal__title {
   font-weight: 900;
   color: #272727;
-  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 1.5vw, 1.5rem);
   text-transform: uppercase;
 }
 
 .game-modal__message,
 .game-over-modal__message {
   color: #000;
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
   line-height: 1.4;
   border-bottom: 4px solid #00ff9f;
   padding: 1.5rem;
@@ -184,7 +179,7 @@ img {
   width: 50%;
   padding: 0.75rem;
   text-align: center;
-  font-size: 1rem;
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
   font-weight: 700;
   text-transform: uppercase;
   border: 3px solid #000;
@@ -211,13 +206,6 @@ img {
   color: #272727;
   box-shadow: 7px 7px 0 #ffb703;
 }
-/* Mobile    */
-@media (max-width: 768px) {
-  body {
-    padding: 5rem;
-    padding-top: 1rem;
-  }
-}
 
 .game-intro {
   position: fixed;
@@ -229,7 +217,6 @@ img {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  z-index: 1000;
   padding: 2rem;
 }
 
@@ -238,6 +225,22 @@ img {
   background-color: #fff;
   padding: 1.5rem;
   box-shadow: 10px 10px 0 #3a3a3a;
-
   font-family: Ceoma;
+}
+
+/* Mobile    */
+@media (max-width: 768px) {
+  body {
+    padding: 5rem;
+    padding-top: 1rem;
+  }
+}
+
+@media (max-width: 568px) {
+  .card-deck {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 }
