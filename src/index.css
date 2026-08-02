@@ -39,7 +39,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(1.5rem, 1.5vw, 1.8rem);
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 1.8rem);
   font-weight: 400;
   text-align: center;
   font-family: Ceoma;
@@ -55,8 +55,10 @@ body {
   position: fixed;
   width: 100%;
   height: 80%;
-  font-size: clamp(2rem, 1.5vw, 2.3rem);
+  font-size: clamp(1.7rem, 0.9rem + 1.2vw, 2rem);
+  line-height: 1.1;
   text-wrap: wrap;
+  padding-bottom: 1rem;
 }
 
 .game-rules {
@@ -81,9 +83,10 @@ body {
   background: #f8ff1d;
   color: #272727;
   font-weight: 400;
-  font-size: clamp(0.875rem, 1.5vw, 1rem); /* 14px → 16px */
+  font-size: clamp(0.875rem, 0.75rem + 0.5vw, 1rem);
+
   font-family: Ceoma;
-  width: clamp(10rem, 1.5vw, 12rem);
+  width: clamp(10rem, 6rem + 10vw, 12rem);
 }
 
 .card-deck {
@@ -141,14 +144,14 @@ img {
 .game-modal__title {
   font-weight: 900;
   color: #272727;
-  font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+  font-size: clamp(1.2rem, 1.09rem + 0.45vw, 1.5rem);
   text-transform: uppercase;
 }
 
 .game-modal__message,
 .game-over-modal__message {
   color: #000;
-  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  font-size: clamp(0.8rem, 0.68rem + 0.5vw, 1rem);
   line-height: 1.4;
   border-bottom: 4px solid #00ff9f;
   padding: 1.5rem;
@@ -180,7 +183,8 @@ img {
   width: 50%;
   padding: 0.75rem;
   text-align: center;
-  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  font-size: clamp(0.8rem, 0.68rem + 0.5vw, 1rem);
+
   font-weight: 700;
   text-transform: uppercase;
   border: 3px solid #000;
